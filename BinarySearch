@@ -16,3 +16,42 @@ class Solution {
         return -1;
     }
 }
+
+
+
+//with user input
+package dataStructureandalgorithm;
+
+import java.util.Scanner;
+
+public class BinarySearch {
+	
+	 static int Search(int[] nums, int target) {
+	        int low = 0;
+	        int high = nums.length - 1;
+
+	        while (low <= high) {
+	            int mid = low + (high - low) / 2;
+
+	            if (nums[mid] == target) {
+	                System.out.println("The element is found at index: " + mid);
+	                return mid;
+	            } else if (nums[mid] < target) {
+	                low = mid + 1;  // Search in the right half
+	            } else {
+	                high = mid - 1;  // Search in the left half
+	            }
+	        }
+	        System.out.println("The element is not found");
+	        return -1;
+	    }
+
+	public static void main(String[] args) {
+		Scanner sc = new Scanner(System.in);
+		int target = sc.nextInt();
+		int n = sc.nextInt();
+		int[] nums = new int[n];
+		System.out.println(Search(nums,target));
+	}
+
+}

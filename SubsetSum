@@ -1,0 +1,29 @@
+import java.util.Scanner;
+
+public class SubsetsSum {
+	
+	public static int CountSubsets(int[] arr , int sum , int i)
+	{
+		if(sum==0) {
+			return 1;
+		}
+		if(sum<0) {
+			return 0;
+		}
+		if(i == arr.length) {
+			return 0;
+		}
+		
+	return	CountSubsets(arr,sum-arr[i],i+1) + CountSubsets(arr,sum,i+1);
+	}
+	public static void main(String[] args) {
+		
+		Scanner sc = new Scanner(System.in);
+		int i = sc.nextInt();
+		int[] arr = new int[i];
+		int sum = sc.nextInt();
+		System.out.println(CountSubsets(arr, sum ,0));
+
+	}
+}
+

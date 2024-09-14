@@ -1,0 +1,21 @@
+import java.util.Scanner;
+
+public class LuckyNumber {
+	
+	public static boolean NumberLucky(int n , int counter) {
+		if(n%counter ==0) {
+			return false;
+		}
+		if(n<counter) {
+			return true;
+		}
+		return NumberLucky(n-(n/counter),counter+1);
+	}
+
+	public static void main(String[] args) {
+		Scanner sc = new Scanner(System.in);
+		int n = sc.nextInt();
+		int counter = sc.nextInt();
+		System.out.println(NumberLucky(n,counter));
+	}
+}

@@ -1,0 +1,49 @@
+public class CeilandFloor {
+
+    public static int ceil(int[] arr, int key) {
+        int low = 0;
+        int high = arr.length - 1;
+
+        while (low <= high) {
+            int mid = (low + high) / 2;
+            if (arr[mid] == key) {
+                return arr[mid];
+            } else if (key < arr[mid]) {
+                high = mid - 1;
+            } else {
+                low = mid + 1;
+            }
+        }
+        if (low < arr.length) {
+            return arr[low];  // Correct: low will be the index for ceil
+        }
+        return -1;  // If ceil is not found
+    }
+
+    public static int floor(int[] arr, int key) {
+        int low = 0;
+        int high = arr.length - 1;  // Corrected from key.length-1
+
+        while (low <= high) {
+            int mid = (low + high) / 2;
+            if (arr[mid] == key) {
+                return arr[mid];
+            } else if (key < arr[mid]) {
+                high = mid - 1;
+            } else {
+                low = mid + 1;
+            }
+        }
+        if (high >= 0) {
+            return arr[high];  // Correct: high will be the index for floor
+        }
+        return -1;  // If floor is not found
+    }
+
+    public static void main(String[] args) {
+        int[] arr = {3, 4, 5, 6, 7, 8, 9, 10, 14, 26, 78, 115};
+        int key = 61;
+        System.out.println("Ceil: " + ceil(arr, key));
+        System.out.println("Floor: " + floor(arr, key));
+    }
+}

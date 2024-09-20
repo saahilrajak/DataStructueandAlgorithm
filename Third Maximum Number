@@ -1,0 +1,23 @@
+import java.util.Arrays;
+
+class Solution {
+    public int thirdMax(int[] nums) {
+        Arrays.sort(nums);
+        int distinctCount = 1; //  first largest
+        int n = nums.length;
+
+        // Traverse the array from the second-last element backward
+        for (int i = n - 2; i >= 0; i--) {
+            // Check if the current number is different from the previous one
+            if (nums[i] != nums[i + 1]) {
+                distinctCount++;
+            }
+            // If we have found the third distinct largest, return it
+            if (distinctCount == 3) {
+                return nums[i];
+            }
+        }
+        // If less than 3 distinct values, return the ur largest value
+        return nums[n - 1];
+    }
+}
